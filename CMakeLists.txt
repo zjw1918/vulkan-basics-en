@@ -34,6 +34,7 @@ endforeach()
 add_custom_target(shaders DEPENDS ${SPV_FILES})
 add_dependencies(vulkan_app shaders)
 
-# Textures: copied to build/textures/, read by relative path
+# Textures and models: copied to build/textures/ and build/models/, read by relative path
 add_custom_command(TARGET vulkan_app POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/textures ${CMAKE_BINARY_DIR}/textures)
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/textures ${CMAKE_BINARY_DIR}/textures
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/models ${CMAKE_BINARY_DIR}/models)
