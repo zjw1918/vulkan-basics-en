@@ -24,7 +24,8 @@ target_link_libraries(particles PRIVATE Vulkan::Vulkan glfw)
 # Shaders: glslc compiles GLSL to SPIR-V into build/shaders/
 #   shader.vert -> vert.spv，particles.comp -> particles_comp.spv
 find_program(GLSLC glslc HINTS $ENV{VULKAN_SDK}/bin REQUIRED)
-set(SHADER_SOURCES shaders/shader.vert shaders/shader.frag shaders/particles.vert shaders/particles.frag)
+set(SHADER_SOURCES shaders/shader.vert shaders/shader.frag shaders/particles.vert shaders/particles.frag
+    shaders/particles.comp)
 foreach(SRC ${SHADER_SOURCES})
   get_filename_component(NAME ${SRC} NAME_WE)
   get_filename_component(STAGE ${SRC} LAST_EXT)
